@@ -13,9 +13,9 @@ for (const heart of data) {
 
 
 // ----------------coin count---------------
-// let totalCoin = 100;
-// const coinDisplay = document.getElementById('coin-btn');
-// coinDisplay.innerText = totalCoin;
+let totalCoin = 100;
+const coinDisplay = document.getElementById('coin-btn');
+coinDisplay.innerText = totalCoin;
 
 
 //--------------- call ---------------
@@ -27,7 +27,7 @@ function getElement(id) {
 
 const callButtons = document.getElementsByClassName('call-btn');
 // console.log(callButtons);
-const coinDisplay = getElement('coin-btn');
+
 
 for (let callBtn of callButtons) {
     callBtn.addEventListener('click', function () {
@@ -38,18 +38,18 @@ for (let callBtn of callButtons) {
         const phoneNumber = callBtn.parentNode.parentNode.children[2].children[0].innerText;
         // console.log(phoneNumber);
 
-        alert(`${cardTitle} :  ${phoneNumber}`);
-
-        // --------------------coin----------------
-        //    if(totalCoin < 20){
-        //     return alert('Not enough coin you have')
-        //    };
+// --------------------coin----------------
+           if(totalCoin < 20){
+            return alert('Not enough coin you have')
+           };
 
 
-        //    if(totalCoin >= 20){
-        //     const coin = totalCoin - coinDisplay;
+        alert(`📞 calling ${cardTitle} ${phoneNumber}...`);
 
-        //    }
+         totalCoin -= 20;
+        coinDisplay.innerText = totalCoin;
+
+
 
 
         const time = new Date();
@@ -86,6 +86,8 @@ for (let callBtn of callButtons) {
 
 }
 
+
+// -------------clear------------------
 document.getElementById('clear-btn').addEventListener('click', function () {
     const callHistory = getElement('call-list-container');
     callHistory.innerHTML = "";
@@ -94,6 +96,8 @@ document.getElementById('clear-btn').addEventListener('click', function () {
 
 // --------------------copy--------------------
 const copyButtons = document.getElementsByClassName('copy-btn');
+let copyCount = 0;
+const copyNavButton = document.getElementById('copy-nav-btn');
 
 for (let button of copyButtons) {
     button.addEventListener('click', (e) => {
@@ -104,8 +108,25 @@ for (let button of copyButtons) {
         const phoneNumber = card.getElementsByClassName('phone-number')[0];
         const serviceNumber = phoneNumber.innerText;
 
+        
         navigator.clipboard.writeText(serviceNumber)
-          
+
+            .then(function () {
+                alert(`number copied ${serviceNumber}`);
+
+                copyCount++;
+                copyNavButton.innerHTML = `
+                <span>${copyCount}</span> Copy
+
+                `;
+
+            })
+
+            .catch(function (err) {
+                alert(`${err}`)
+
+            });
+
     })
 }
 

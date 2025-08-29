@@ -54,25 +54,23 @@ for (let callBtn of callButtons) {
 
         const time = new Date();
         const PresentTime = time.toLocaleTimeString();
-        const date = time.toLocaleDateString();
 
 
         const callHistory = getElement('call-list-container');
         const newCallHistory = document.createElement('div');
         newCallHistory.innerHTML = `
-        <div class="rounded-lg flex gap-3 p-2">
+        <div class="rounded-lg flex gap-3 p-2 bg-[#f5fff6] m-3">
                            
                            <div>
 
-                            <h2 class="font-bold">${cardTitle}</h2>
-                            <h2 class="font-bold">${phoneNumber}</h2>
+                            <h2 class="font-semibold">${cardTitle}</h2>
+                            <h2 class="text-[#5c5c5c]">${phoneNumber}</h2>
 
                            </div>
 
                             <div>
 
                             <p>${PresentTime}</p>
-                            <p>${date}</p>
                             
                             </div>
                            

@@ -38,15 +38,15 @@ for (let callBtn of callButtons) {
         const phoneNumber = callBtn.parentNode.parentNode.children[2].children[0].innerText;
         // console.log(phoneNumber);
 
-// --------------------coin----------------
-           if(totalCoin < 20){
+        // --------------------coin----------------
+        if (totalCoin < 20) {
             return alert('Not enough coin you have')
-           };
+        };
 
 
         alert(`📞 calling ${cardTitle} ${phoneNumber}...`);
 
-         totalCoin -= 20;
+        totalCoin -= 20;
         coinDisplay.innerText = totalCoin;
 
 
@@ -106,7 +106,7 @@ for (let button of copyButtons) {
         const phoneNumber = card.getElementsByClassName('phone-number')[0];
         const serviceNumber = phoneNumber.innerText;
 
-        
+
         navigator.clipboard.writeText(serviceNumber)
 
             .then(function () {

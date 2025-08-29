@@ -12,7 +12,6 @@ for (const heart of data) {
 }
 
 
-
 //--------------- call ---------------
 function getElement(id) {
     return document.getElementById(id);
@@ -21,8 +20,8 @@ function getElement(id) {
 
 
 const callButtons = document.getElementsByClassName('call-btn');
-console.log(callButtons);
-
+// console.log(callButtons);
+  const coinDisplay = getElement('coin-btn');
 
 for (let callBtn of callButtons) {
     callBtn.addEventListener('click', function () {
@@ -32,6 +31,12 @@ for (let callBtn of callButtons) {
 
         const phoneNumber = callBtn.parentNode.parentNode.children[2].children[0].innerText;
         // console.log(phoneNumber);
+
+        alert(`${cardTitle} ${phoneNumber}`);
+
+// --------------------coin----------------
+       
+        
 
         const time = new Date();
         const PresentTime = time.toLocaleTimeString();

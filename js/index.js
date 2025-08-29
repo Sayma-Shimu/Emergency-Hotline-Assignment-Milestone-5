@@ -12,16 +12,22 @@ for (const heart of data) {
 }
 
 
+// ----------------coin count---------------
+// let totalCoin = 100;
+// const coinDisplay = document.getElementById('coin-btn');
+// coinDisplay.innerText = totalCoin;
+
+
 //--------------- call ---------------
 function getElement(id) {
     return document.getElementById(id);
-    
+
 }
 
 
 const callButtons = document.getElementsByClassName('call-btn');
 // console.log(callButtons);
-  const coinDisplay = getElement('coin-btn');
+const coinDisplay = getElement('coin-btn');
 
 for (let callBtn of callButtons) {
     callBtn.addEventListener('click', function () {
@@ -32,11 +38,19 @@ for (let callBtn of callButtons) {
         const phoneNumber = callBtn.parentNode.parentNode.children[2].children[0].innerText;
         // console.log(phoneNumber);
 
-        alert(`${cardTitle} ${phoneNumber}`);
+        alert(`${cardTitle} :  ${phoneNumber}`);
 
-// --------------------coin----------------
-       
-        
+        // --------------------coin----------------
+        //    if(totalCoin < 20){
+        //     return alert('Not enough coin you have')
+        //    };
+
+
+        //    if(totalCoin >= 20){
+        //     const coin = totalCoin - coinDisplay;
+
+        //    }
+
 
         const time = new Date();
         const PresentTime = time.toLocaleTimeString();
@@ -72,12 +86,28 @@ for (let callBtn of callButtons) {
 
 }
 
-document.getElementById('clear-btn').addEventListener('click', function(){
+document.getElementById('clear-btn').addEventListener('click', function () {
     const callHistory = getElement('call-list-container');
     callHistory.innerHTML = "";
 });
 
 
+// --------------------copy--------------------
+const copyButtons = document.getElementsByClassName('copy-btn');
+
+for (let button of copyButtons) {
+    button.addEventListener('click', (e) => {
+
+        const clickButton = e.target;
+        const card = clickButton.parentNode.parentNode;
+
+        const phoneNumber = card.getElementsByClassName('phone-number')[0];
+        const serviceNumber = phoneNumber.innerText;
+
+        navigator.clipboard.writeText(serviceNumber)
+          
+    })
+}
 
 
 
